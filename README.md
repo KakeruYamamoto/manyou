@@ -14,7 +14,7 @@ Taskモデル
 | id | integer |
 | user_id(FK) |references |
 | title | text |
-| limitline | datetime |
+| deadline | datetime |
 | status | string |
 | priority | integer |
 
