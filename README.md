@@ -13,7 +13,8 @@ Taskモデル
 ----|----
 | id | integer |
 | user_id(FK) |references |
-| title | text |
+| title | string |
+| content | text |
 | deadline | datetime |
 | status | string |
 | priority | integer |
