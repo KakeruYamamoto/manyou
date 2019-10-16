@@ -1,7 +1,7 @@
 <%= form_with(model: task, local: true) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this blog from being saved:</h2>
+      <h2><%= pluralize(task.errors.count, "件のエラー　") %> このタスク内容では保存できません。</h2>
 
       <ul>
         <% task.errors.full_messages.each do |message| %>
