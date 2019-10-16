@@ -5,14 +5,16 @@
     <tr>
       <th>Title</th>
       <th>Content</th>
+      <th>Time</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @tasks.each do |task| %>
+    <% @tasks.order(created_at: :desc).each do |task| %>
       <tr>
         <td><%= task.title %></td>
         <td><%= task.content %></td>
+        <td><%= task.created_at.strftime(("%Y年%m月%d日 %H:%M:%S")) %></td>
         <td><%= link_to '詳細', task %></td>
         <td><%= link_to '編集', edit_task_path(task) %></td>
         <td><%= link_to '削除', task, method: :delete, data: { confirm: '削除しますか?' } %></td>

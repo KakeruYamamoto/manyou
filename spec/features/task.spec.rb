@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature "タスク管理機能", type: :feature do
+  background do
+    @task = FactoryBot.create(:task)
+    @task2 = FactoryBot.create(:second_task)
+  end
 
   scenario "タスク一覧のテスト" do
-    @task = Task.create!(title: 'test_task_01', content: 'testtesttest')
-    Task.create!(title: 'test_task_02', content: 'samplesample')
-
     visit tasks_path
-    # save_and_open_page
+
     expect(page).to have_content 'testtesttest'
     expect(page).to have_content 'samplesample'
   end
@@ -18,20 +19,22 @@ RSpec.feature "タスク管理機能", type: :feature do
     fill_in "task_title", with: 'testtesttest'
     fill_in 'task_content', with: 'samplesample'
 
-    click_on 'Create Task'
+    click_on '登録する'
 
     expect(page).to have_content 'testtesttest'
     expect(page).to have_content 'samplesample'
   end
 
   scenario "タスク詳細のテスト" do
-    @task = Task.create!(title: 'test_task_01', content: 'testtesttest')
-    @task2 = Task.create!(title: 'test_task_02', content: 'samplesample')
     visit task_path(@task.id)
 
     expect(page).to have_content @task.title
     expect(page).to have_content @task.content
-    expect(page).not_to have_content @task2.title
-    expect(page).not_to have_content @task2.content
+  end
+
+  scenario "タスクが作成日時の降順に並んでいるかのテスト" do
+    visit tasks_path
+    s = all('td')[1].native.to_s
+    expect(s).to eq '<td>Factoryで作ったデフォルトのコンテント２</td>'
   end
 end
