@@ -6,7 +6,12 @@ FactoryBot.define do
   end
 
   factory :second_task, class: Task do
-    title { 'Factoryで作ったデフォルトのタイトル２' }
-    content { 'Factoryで作ったデフォルトのコンテント２' }
+    title { 'testtesttest2' }
+    content { 'samplesample2' }
+  end
+
+  factory :third_task, class: Task do
+    title { 'testtesttest3' }
+    content { 'samplesample3' }
   end
 end
