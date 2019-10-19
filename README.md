@@ -1,3 +1,5 @@
+- スキーマ
+
 Userモデル
 
 | カラム名 | データ型 |
@@ -33,3 +35,13 @@ labelingモデル
 ----|----
 | label_id(FK) | references |
 | task_id(FK) | references |
+
+- デプロイ手順
+１：git commitコマンドを使用して、コミット<br>
+２：Herokuに新しいアプリケーションを作成: $ heroku create<br>
+３：Herokuにデプロイ: $ git push heroku master<br>
+４：データベースの移行: $ heroku run rails db:migrate<br>
+
+- バージョン
+rails 5.2.3
+ruby 2.6.4
