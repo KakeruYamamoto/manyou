@@ -12,6 +12,9 @@ gem 'turbolinks', '~> 5'
 # gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', '3.1.11'
+gem 'pry-rails'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 
 group :development, :test do
