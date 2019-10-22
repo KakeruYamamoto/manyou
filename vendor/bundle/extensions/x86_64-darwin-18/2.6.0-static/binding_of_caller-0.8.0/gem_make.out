@@ -1,5 +1,5 @@
 current directory: /Users/kame/workspace/Ruby_on_Rails/manyou/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
-/Users/kame/.rbenv/versions/2.6.4/bin/ruby -I /Users/kame/.rbenv/versions/2.6.4/lib/ruby/site_ruby/2.6.0 -r ./siteconf20191022-91278-ljr9hc.rb extconf.rb
+/Users/kame/.rbenv/versions/2.6.4/bin/ruby -I /Users/kame/.rbenv/versions/2.6.4/lib/ruby/site_ruby/2.6.0 -r ./siteconf20191021-53260-13laerv.rb extconf.rb
 
 current directory: /Users/kame/workspace/Ruby_on_Rails/manyou/vendor/bundle/gems/binding_of_caller-0.8.0/ext/binding_of_caller
 make "DESTDIR=" clean
