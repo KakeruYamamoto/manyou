@@ -87,10 +87,27 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_content 'testtesttest3'
   end
 
-  scenario "タスク絞り込みのテスト" do
+  scenario "タスクをステータスで絞り込みのテスト" do
     visit tasks_path
     select '完了', from: 'task_status'
-    click_on '絞り込む'
+    click_on '上記の条件で検索'
     expect(page).to have_content 'testtesttest2'
+  end
+
+  scenario "一覧画面で優先順位でソートテスト" do
+    visit tasks_path
+    click_link '優先順位でソート'
+    all('tr')[1].click_link '詳細'
+    expect(page).to have_content 'testtesttest3'
+
+    visit tasks_path
+    click_link '優先順位でソート'
+    all('tr')[2].click_link '詳細'
+    expect(page).to have_content 'testtesttest2'
+
+    visit tasks_path
+    click_link '優先順位でソート'
+    all('tr')[3].click_link '詳細'
+    expect(page).to have_content 'testtesttest5'
   end
 end
