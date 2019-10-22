@@ -26,17 +26,7 @@
     <%= form.datetime_select :deadline %>
   </div>
 
-  <div class="field">
-    <%= form.label :状態 %>
-    <%= form.select :status, ["未着手","着手中","完了"] %>
-  </div>
-
-  <div class="field">
-    <%= form.label :優先順位 %>
-    <%= form.select :priority, ["高","中","低"] %>
-  </div>
-
   <div class="actions">
-    <%= form.submit :class =>"btn btn-primary" %>
+    <%= form.submit %>
   </div>
 <% end %>

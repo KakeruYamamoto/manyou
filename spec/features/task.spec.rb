@@ -6,8 +6,6 @@ RSpec.feature "タスク管理機能", type: :feature do
     @task = FactoryBot.create(:task)
     @task2 = FactoryBot.create(:second_task)
     @task3 = FactoryBot.create(:third_task)
-    @task4 = FactoryBot.create(:fourth_task)
-    @task5 = FactoryBot.create(:fifth_task)
   end
 
   scenario "タスク一覧のテスト" do
@@ -41,16 +39,16 @@ RSpec.feature "タスク管理機能", type: :feature do
     # expect(s).to have_selector td[1], text: 'testtesttest3'
     # save_and_open_page
     visit tasks_path
-    all('tr')[1].click_link '詳細'
-    expect(page).to have_content 'testtesttest5'
-
-    visit tasks_path
-    all('tr')[2].click_link '詳細'
-    expect(page).to have_content 'testtesttest4'
-
-    visit tasks_path
-    all('tr')[3].click_link '詳細'
+    all('tr td')[3].click_link '詳細'
     expect(page).to have_content 'testtesttest3'
+
+    visit tasks_path
+    all('tr td')[9].click_link '詳細'
+    expect(page).to have_content 'testtesttest2'
+
+    visit tasks_path
+    all('tr td')[15].click_link '詳細'
+    expect(page).to have_content 'testtesttest'
 
   end
 
@@ -73,41 +71,17 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "一覧画面で終了期限でソートテスト" do
     visit tasks_path
     click_link '終了期限でソート'
-    all('tr')[1].click_link '詳細'
-    expect(page).to have_content 'testtesttest5'
-
-    visit tasks_path
-    click_link '終了期限でソート'
-    all('tr')[2].click_link '詳細'
-    expect(page).to have_content 'testtesttest4'
-
-    visit tasks_path
-    click_link '終了期限でソート'
-    all('tr')[3].click_link '詳細'
-    expect(page).to have_content 'testtesttest3'
-  end
-
-  scenario "タスクをステータスで絞り込みのテスト" do
-    visit tasks_path
-    select '完了', from: 'task_status'
-    click_on '上記の条件で検索'
-    expect(page).to have_content 'testtesttest2'
-  end
-
-  scenario "一覧画面で優先順位でソートテスト" do
-    visit tasks_path
-    click_link '優先順位でソート'
-    all('tr')[1].click_link '詳細'
+    all('tr td')[3].click_link '詳細'
     expect(page).to have_content 'testtesttest3'
 
     visit tasks_path
-    click_link '優先順位でソート'
-    all('tr')[2].click_link '詳細'
+    click_link '終了期限でソート'
+    all('tr td')[9].click_link '詳細'
     expect(page).to have_content 'testtesttest2'
 
     visit tasks_path
-    click_link '優先順位でソート'
-    all('tr')[3].click_link '詳細'
-    expect(page).to have_content 'testtesttest5'
+    click_link '終了期限でソート'
+    all('tr td')[15].click_link '詳細'
+    expect(page).to have_content 'testtesttest'
   end
 end
