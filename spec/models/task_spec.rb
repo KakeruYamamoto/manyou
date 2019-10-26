@@ -13,7 +13,8 @@ RSpec.describe Task, type: :model do
   end
 
   it "titleとcontentに内容が記載されていればバリデーションが通る" do
-    task = Task.new(title: '成功テスト', content: '成功テスト')
+    user = User.new(name: '成功テスト', email: 'success@s.com', password_digest: '111111')
+    task = Task.new(title: '成功テスト', content: '成功テスト', deadline: Time.zone.today, status: '未着手', priority: 0, user: User.first || user )
     expect(task).to be_valid
   end
 

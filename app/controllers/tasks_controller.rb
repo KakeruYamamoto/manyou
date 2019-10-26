@@ -1,11 +1,15 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user
+  before_action :forbid_correct_user, only: [:edit, :update, :destroy]
+
   PER = 10
+
   def index
     if params[:task].present? && params[:task][:search]
-      @tasks = Task.title_scope(params[:task][:title]).status_scope(params[:task][:status]).page(params[:page]).per(PER)
+      @tasks = Task.title_scope(params[:task][:title]).status_scope(params[:task][:status]).user_scope(current_user.id).page(params[:page]).per(PER)
     else
-      @tasks = Task.all.page(params[:page]).per(PER)
+      @tasks = Task.all.user_scope(current_user.id).page(params[:page]).per(PER)
     end
     if params[:sort_expired]
       @tasks = @tasks.order(deadline: :desc).page(params[:page]).per(PER)
@@ -21,7 +25,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       flash[:notice] = "作成しました"
       redirect_to tasks_path

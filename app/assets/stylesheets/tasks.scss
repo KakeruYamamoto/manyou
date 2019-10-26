@@ -4,12 +4,36 @@
 
 body {
   text-align: center;
-  table {
-    th {
-      text-align: center;
+  th {
+    text-align: center;
+  }
+}
+
+.table {
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+        padding: 6px 0;
+      }
     }
   }
 }
 .btn {
   min-width: 80px;
+}
+.show-table {
+  width: 900px;
+}
+
+.btn-td {
+  width: 80px;
+
+  .btn {
+    padding: 4px 0;
+    min-width: 65px;
+  }
+}
+.pagination {
+  margin-top: 0;
 }
