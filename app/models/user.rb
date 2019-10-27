@@ -4,7 +4,7 @@ class User < ApplicationRecord
   before_destroy :destroy_admin_count
 
   validates :name, length: { maximum: 30 }
-  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :email, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: true
   before_validation { email.downcase! }
 
   has_secure_password
@@ -19,11 +19,11 @@ class User < ApplicationRecord
   end
 
   def destroy_admin_count
-    throw(:abort) if User.where(admin: true).length <= 1 && self.admin?
+    throw(:abort) if User.where(admin: true).length == 1 && self.admin?
   end
 
   def update_admin_count
-    throw(:abort) if User.where(admin: true).length <= 1
+    throw(:abort) if User.where(admin: true).length == 1
   end
 
 end
