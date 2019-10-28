@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   #     name == "test" && password == "123456"
   #   end
   # end
+  protect_from_forgery with: :exception
+  include SessionsHelper
+  include UsersHelper
+
 end

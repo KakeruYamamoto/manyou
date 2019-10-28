@@ -23,34 +23,37 @@
 </div>
 
 
-<div class="panel panel-default container">
+<div class="panel panel-default container show-table">
   <table class="table">
     <thead>
       <tr>
+        <th>投稿者</th>
         <th>タスク名</th>
         <th>タスク内容</th>
         <th>終了期限</th>
         <th>状態</th>
         <th>優先順位</th>
+        <th>詳細</th>
+        <th>編集</th>
+        <th>削除</th>
       </tr>
     </thead>
 
     <tbody>
       <% @tasks.each do |task| %>
         <tr>
+          <td><%= task.user.name %></td>
           <td><%= task.title %></td>
           <td><%= task.content %></td>
           <td><%= task.deadline.strftime(("%Y年%m月%d日 %H時%M分")) %></td>
           <td><%= task.status %></td>
           <td><%= task.priority %></td>
-          <td><%= link_to '詳細', task %></td>
-          <td><%= link_to '編集', edit_task_path(task) %></td>
-          <td><%= link_to '削除', task, method: :delete %></td>
+          <td class="btn-td"><%= link_to '', task, :class =>"glyphicon glyphicon-folder-open btn btn-success" %></td>
+          <td class="btn-td"><%= link_to '', edit_task_path(task), :class =>"glyphicon glyphicon-pencil btn btn-warning" %></td>
+          <td class="btn-td"><%= link_to '', task, method: :delete, :class =>"glyphicon glyphicon-trash btn btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<%= link_to '新規作成', new_task_path, :class =>"btn btn-primary" %>
-<br>
 <%= paginate @tasks %>

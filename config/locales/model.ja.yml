@@ -11,7 +11,11 @@ ja:
         title: タイトル
         name: 名前
         email: メールアドレス
+        authority: 管理者権限
         current_password: 現在のパスワード
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+        admin:
+          true:　管理ユーザ
+          false:　一般ユーザ
