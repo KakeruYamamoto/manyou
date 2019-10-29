@@ -22,3 +22,7 @@
   5.times do |i|
     Task.create!(title: "test#{i + 20}", content: "test#{i + 20}", status: "未着手", deadline: "#{Time.zone.today + 6}", priority: 0, user_id: User.first.id + 5)
   end
+
+  5.times do |i|
+    Label.create!(name: "label#{i + 1}")
+  end
