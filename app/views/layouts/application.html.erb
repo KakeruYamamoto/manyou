@@ -21,6 +21,7 @@
               <li><%= link_to 'Users', users_path %></li>
               <li><%= link_to 'Tasks', tasks_path %></li>
               <li><%= link_to 'NewTask', new_task_path %></li>
+              <li><%= link_to "Labels", labels_path %></li>
               <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
               <li><%= link_to "LoginNow：#{current_user.name}", user_path(current_user.id) %></li>
               <li><%= link_to 'AdminPage', admin_users_path %></li>

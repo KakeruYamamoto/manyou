@@ -46,10 +46,10 @@ RSpec.feature "タスク管理機能", type: :feature do
     all('tr td')[6].click_link ''
     expect(page).to have_content 'testtesttestC'
     visit tasks_path
-    all('tr td')[15].click_link ''
+    all('tr td')[16].click_link ''
     expect(page).to have_content 'testtesttestB'
     visit tasks_path
-    all('tr td')[24].click_link ''
+    all('tr td')[26].click_link ''
     expect(page).to have_content 'testtesttestA'
 
   end
@@ -74,11 +74,11 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_content 'testtesttestC'
     visit tasks_path
     click_link '終了期限でソート'
-    all('tr td')[15].click_link ''
+    all('tr td')[16].click_link ''
     expect(page).to have_content 'testtesttestB'
     visit tasks_path
     click_link '終了期限でソート'
-    all('tr td')[24].click_link ''
+    all('tr td')[26].click_link ''
     expect(page).to have_content 'testtesttestA'
   end
 
@@ -96,11 +96,11 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(page).to have_content 'testtesttestC'
     visit tasks_path
     click_link '優先順位でソート'
-    all('tr td')[15].click_link ''
+    all('tr td')[16].click_link ''
     expect(page).to have_content 'testtesttestB'
     visit tasks_path
     click_link '優先順位でソート'
-    all('tr td')[24].click_link ''
+    all('tr td')[26].click_link ''
     expect(page).to have_content 'testtesttestA'
   end
 end
