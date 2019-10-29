@@ -7,7 +7,11 @@ class TasksController < ApplicationController
 
   def index
     if params[:task].present? && params[:task][:search]
-      @tasks = Task.title_scope(params[:task][:title]).status_scope(params[:task][:status]).user_scope(current_user.id).page(params[:page]).per(PER)
+      @tasks = Task.title_scope(params[:task][:title])
+                   .status_scope(params[:task][:status])
+                   .label_scope(params[:task][:label_id])
+                   .user_scope(current_user.id)
+                   .page(params[:page]).per(PER)
     else
       @tasks = Task.all.user_scope(current_user.id).page(params[:page]).per(PER)
     end
@@ -63,7 +67,10 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
+    if params[:task][:label_ids].nil?
+      params.require(:task).permit(:title, :content, :deadline, :status, :priority, :label_id).merge(label_ids: [])
+    else
+      params.require(:task).permit(:title, :content, :deadline, :status, :priority, :label_id, label_ids: [])
+    end
   end
-
 end
